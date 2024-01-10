@@ -21,6 +21,13 @@ public class CinemaController : Controller
 		_mapper = mapper;
 	}
 
+	/// <summary>
+	/// Adiciona um novo cinema ao banco de dados.
+	/// </summary>
+	/// <param name="cinemaDto">Objeto CreateCinemaDto contendo informações do novo cinema</param>
+	/// <returns>IActionResult</returns>
+	/// <returns>Objeto recém-criado do cinema</returns>
+	/// <response code="201">Retorna o cinema recém-criado</response>
 	[HttpPost]
 	[ProducesResponseType(StatusCodes.Status201Created)]
 	public IActionResult AdicionarCinema([FromBody] CreateCinemaDto cinemaDto)
@@ -31,6 +38,13 @@ public class CinemaController : Controller
 		return CreatedAtAction(nameof(RecuperaCinemasPorId), new { id = cinema.Id }, cinema);
 	}
 
+	/// <summary>
+	/// Recupera uma lista de cinemas armazenados.
+	/// </summary>
+	/// <param name="enderecoId">ID do endereço para filtrar cinemas (opcional)</param>
+	/// <returns>IEnumerable</returns>
+	/// <returns>Lista de objetos ReadCinemaDto</returns>
+	/// <response code="200">Retonar uma lista de cinemas caso a consulta seja bem-sucedida</response>
 	[HttpGet]
 	[ProducesResponseType(StatusCodes.Status200OK)]
 	public IEnumerable<ReadCinemaDto> RecuperaCinemas([FromQuery] int? enderecoId = null)
@@ -42,6 +56,13 @@ public class CinemaController : Controller
 		return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.FromSqlRaw($"SELECT * FROM cinemas WHERE EnderecoId = {enderecoId}").ToList());
 	}
 
+	/// <summary>
+	/// Recupera informações de um cinema com base no seu identificador único.
+	/// </summary>
+	/// <param name="id">Identificador único do cinema</param>
+	/// <returns>IActionResult</returns>
+	/// <response code="200">Retorna o cinema correspondente ao ID fornecido</response>
+	/// <response code="404">Retorna NotFound caso o cinema não seja encontrado</response>
 	[HttpGet("{id}")]
 	[ProducesResponseType(StatusCodes.Status200OK)]
 	[ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -53,6 +74,14 @@ public class CinemaController : Controller
 		return Ok(cinemaDto);
 	}
 
+	/// <summary>
+	/// Atualiza informações específicas de um cinema com base no seu identificador único.
+	/// </summary>
+	/// <param name="id">Identificador único do cinema</param>
+	/// <param name="cinemaDto">Objeto contendo os campos necessários para a atualização do cinema</param>
+	/// <returns>IActionResult</returns>
+	/// <response code="204">Retorna NoContent caso a atualização seja feita com sucesso</response>
+	/// <response code="404">Retorna NotFound caso o cinema não seja encontrado</response>
 	[HttpPut("{id}")]
 	[ProducesResponseType(StatusCodes.Status204NoContent)]
 	[ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -65,6 +94,15 @@ public class CinemaController : Controller
 		return NoContent();
 	}
 
+	/// <summary>
+	/// Atualiza parcialmente um cinema com base no seu identificador único.
+	/// </summary>
+	/// <param name="id">Identificador único do cinema</param>
+	/// <param name="patch">Objeto contendo as operações para atualização parcial do cinema</param>
+	/// <returns>IActionResult</returns>
+	/// <response code="204">Retorna NoContent caso a atualização seja feita com sucesso</response>
+	/// <response code="404">Retorna NotFound caso o cinema não seja encontrado</response>
+	/// <response code="400">Retorna ValidationProblem caso ocorra um problema de validação</response>
 	[HttpPatch("{id}")]
 	[ProducesResponseType(StatusCodes.Status204NoContent)]
 	[ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -87,6 +125,13 @@ public class CinemaController : Controller
 		return NoContent();
 	}
 
+	/// <summary>
+	/// Remove um cinema do banco de dados com base no seu identificador único.
+	/// </summary>
+	/// <param name="id">O identificador único do cinema a ser removido</param>
+	/// <returns>IActionResult</returns>
+	/// <response code="204">Retorna NoContent se o cinema for removido com sucesso</response>
+	/// <response code="404">Retorna NotFound se o cinema não for encontrado</response>
 	[HttpDelete("{id}")]
 	[ProducesResponseType(StatusCodes.Status204NoContent)]
 	[ProducesResponseType(StatusCodes.Status404NotFound)]
