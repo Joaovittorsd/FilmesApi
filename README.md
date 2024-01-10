@@ -41,7 +41,7 @@ Certifique-se de configurar as credenciais de acesso ao banco de dados no arquiv
 
 ## Instalação e Execução
 
-1. Clone o repositório: `git clone https://github.com/Joaovittorsd/FilmesApi.git`
+1. Clone o repositório: `https://github.com/Joaovittorsd/FilmesApi.git`
 2. Configure as credenciais do banco de dados no arquivo `appsettings.json`.
 3. Instale as dependências do projeto: `dotnet restore`
 4. Execute as migrações para criar o banco de dados.
