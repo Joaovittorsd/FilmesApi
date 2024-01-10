@@ -15,7 +15,7 @@ A FilmeAPI oferece endpoints para realizar operações CRUD (Create, Read, Updat
 
 ## Tecnologias Utilizadas
 
-- Linguagens de Programação: C#, MySql
+- Linguagens de Programação: C#, SQL
 - Banco de Dados: MySQL
 - Ferramentas e Tecnologias Adicionais: .NET Core SDK, Visual Studio (ou Visual Studio Code), Git, Postman
 
