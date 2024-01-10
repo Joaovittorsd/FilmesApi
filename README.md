@@ -15,36 +15,22 @@ A FilmeAPI oferece endpoints para realizar operações CRUD (Create, Read, Updat
 
 ## Tecnologias Utilizadas
 
-- ASP.NET Core Web API (versão .NET 6.0) para o desenvolvimento do back-end
-- Entity Framework Core (versão 7.0)
-- MySQL
-- AutoMapper
+- Linguagens de Programação: C#, MySql
+- Banco de Dados: MySQL
+- Ferramentas e Tecnologias Adicionais: .NET Core SDK, Visual Studio (ou Visual Studio Code), Git, Postman
+
+### Frameworks e Bibliotecas
+
+- **ASP.NET Core (versão 6.5.0):** Utilizado como base para o desenvolvimento da Web API.
+- **Entity Framework Core (versão 7.0.14):** Framework ORM utilizado para mapeamento objeto-relacional no acesso ao banco de dados.
+- **AutoMapper:** Utilizado para mapeamento de objetos.
+- **Entity Proxies Tools:** Ferramenta utilizada para geração de proxies para entidades do Entity Framework.
+- **Newtonsoft.Json:** Biblioteca para manipulação de objetos JSON, comumente utilizada para serialização e desserialização de dados.
+
 
 ### Configuração do Entity Framework Core
 
 Certifique-se de configurar as credenciais de acesso ao banco de dados no arquivo `appsettings.json`. As migrações do Entity Framework Core devem ser aplicadas para criar as tabelas necessárias no banco de dados.
-
-## Endpoints da API
-
-### POST /api/Filme
-
-Adiciona um novo filme ao banco de dados.
-
-### GET /api/Filme
-
-Recupera uma lista de filmes armazenados.
-
-### GET /api/Filme/{id}
-
-Recupera informações de um filme específico com base no seu ID.
-
-### PUT /api/Filme/{id}
-
-Atualiza as informações de um filme existente.
-
-### DELETE /api/Filme/{id}
-
-Remove um filme do banco de dados com base no seu ID.
 
 ## Pré-requisitos
 
